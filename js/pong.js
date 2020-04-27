@@ -16,8 +16,8 @@ function pong(){
     var xBall = Math.floor(Math.random() * 300) + 50;
     var yBall = 50;
     var diameter = 20;
-    var xBallChange = 5;
-    var yBallChange = 5;
+    var xBallChange = 3;
+    var yBallChange = 3;
 
     var canvasWidth = 800;
     var canvasHeight = 400;
@@ -65,24 +65,34 @@ function pong(){
           xBall > canvasWidth - 0.5*diameter) {
     		xBallChange *= -1;
       }
-    	if (yBall < diameter/2 ||
-          yBall > canvasHeight - diameter) {
+    	if (yBall < diameter/2) {
         yBallChange *= -1;
+    	}
+
+      if (yBall > canvasHeight - diameter) {
+        xBall = Math.floor(Math.random() * 300) + 50;
+        yBall = 50;
+        score = 0;
+        xBallChange = Math.floor(p.random(0,1)*6)-3.0;
     	}
 
       // Detect collision with paddle
       if ((xBall > xPaddle &&
           xBall < xPaddle + paddleWidth) &&
           (yBall + (diameter/2) >= yPaddle) &&
-          (yBall + (diameter/2) <= yPaddle+5)) {
+          (yBall + (diameter/2) <= yPaddle+yBallChange-1)) {
 
             if (p.random(0,1) > prob) {
                 xBallChange *= -1;
                 yBallChange *= -1;
                 score++;
               } else {
+
+                alert("Even the best player can't beat the rules of quantum mechanics. Just like in life, death is inevitable no matter how well you play the game.")
               }
       }
+
+
 
       // Draw ball
     	p.fill(255);
