@@ -23,20 +23,22 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/exhibits.css">
 
   <!-- Scripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script> -->
   <!-- <link rel="stylesheet" href="css/github-prettify-theme.css"> -->
-  <script src="js/site.js"></script>
-
+  <script src="js/site.js" type="text/javascript"></script>
+  <script src="js/p5.min.js" type="text/javascript"></script>
+  <script src="js/exhibits.js" type="text/javascript"></script>
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <!-- <link rel="icon" type="image/png" href="dist/images/favicon.png"> -->
 
 </head>
-<body class="code-snippets-visible">
+<body class="code-snippets-visible" onload="tunnelling();">
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -49,20 +51,17 @@
       <div class="container">
         <ul class="navbar-list">
 
-          <li class="navbar-item"><a class="navbar-link" href="#intro">Intro</a></li>
-          <li class="navbar-item"><a class="navbar-link" href="#research">Research</a></li>
-          <li class="navbar-item"><a class="navbar-link" href="#OPE">Outreach</a></li>
-          <li class="navbar-item"><a class="navbar-link" href="#teaching">Teaching</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="#about">About</a></li>
 
           <li class="navbar-item">
             <a class="navbar-link" href="#" data-popover="#moreNavPopover">Virtual Exhibits</a>
             <div id="moreNavPopover" class="popover">
               <ul class="popover-list">
                 <li class="popover-item">
-                  <a class="popover-link" onclick="loadExhibit('superposition');" href="#">Superposition</a>
+                  <a class="popover-link" onclick="superposition();" href="#">Superposition</a>
                 </li>
                 <li class="popover-item">
-                  <a class="popover-link">Tunnelling</a>
+                  <a class="popover-link" onclick="tunnelling();" >Tunnelling</a>
                 </li>
               </ul>
             </div>
@@ -98,14 +97,14 @@
 
     <!-- Header -->
     <div class="docs-section" id="intro">
-      <h3 class="docs-header">Museum of Quantum </h3>
+      <h3 class="docs-header">Exhibits&gt;&gt;</h3><h4 id="exhibit_title"></h4>
     </div>
 
-
-
-
-    <div id="exhibit"></div>
-
+    <div id="exhibit_description"></div>
+    <div id="exhibit">
+    <div id="exhibit_canvas"></div>
+    <div id="inputs"></div>
+    </div>
 
 
 
