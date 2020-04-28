@@ -8,20 +8,26 @@
 }
 
 
-#inputs {
+#controls {
   display: inline-block;
   width: 100%;
 }
 
-.input {
+.controls_checkbox {
+  /* padding: 5px; */
+  /* display: inline-block; */
+}
 
+.controls_checkbox_label {
+  padding: 5px;
   /* display: inline-block; */
 }
 
 
-.checkbox_label {
-  padding: 5px;
-}
+
+
+
+
 
 .superposition_slider {
   -webkit-appearance: none;  /* Override default CSS styles */

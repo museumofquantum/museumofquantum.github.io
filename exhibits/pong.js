@@ -8,7 +8,8 @@ function pong(){
   }
 
   $("#exhibit_title").html("Quantum Pong");
-  $("#exhibit_description").html("<p>Click to release a particle with energy equivalent to the y-axis position.</p>");
+  $("#exhibit_description").html("<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse neque ex, venenatis id mauris quis, faucibus iaculis nunc. Sed congue arcu vel lorem euismod tincidunt. Sed at lorem ullamcorper, imperdiet lectus fermentum, aliquam erat. Mauris bibendum nec purus nec finibus. Nunc eget nibh mauris. Aliquam ultrices ligula non felis tristique euismod. Etiam vitae sem orci. Proin vel neque id metus accumsan laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut eleifend finibus ipsum, vel molestie nisi dapibus ac.</p>");
+  $("#instructions").html("Use your mouse to control the paddle. Due to quantum tunnelling the ball has a chance of passing through the paddle depending on its energy and the thickness of the barrier.");
 
 
   var sketch = function( p ) {
@@ -37,17 +38,17 @@ function pong(){
     var prob = 0.8;
 
     p.setup = function() {
-      $("#inputs").empty();
+      $("#controls").empty();
       var canvas = p.createCanvas(canvasWidth, canvasHeight);
       canvas.parent("exhibit_canvas");
-      $("#inputs").append("<span>BARRIER WIDTH</span>");
+      $("#controls").append("<span>BARRIER WIDTH</span>");
       width_slider = p.createSlider(0,5.0,2.5,0);
       width_slider.class('superposition_slider');
-      width_slider.parent('inputs');
-      $("#inputs").append("<span>E/V</span>");
+      width_slider.parent('controls');
+      $("#controls").append("<span>E/V</span>");
       E_slider = p.createSlider(0,2.0,0.1,0);
       E_slider.class('superposition_slider');
-      E_slider.parent('inputs');
+      E_slider.parent('controls');
     }
 
     p.draw = function() {
@@ -87,7 +88,6 @@ function pong(){
                 yBallChange *= -1;
                 score++;
               } else {
-
                 alert("Even the best player can't beat the rules of quantum mechanics. Just like in life, death is inevitable no matter how well you play the game.")
               }
       }

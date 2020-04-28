@@ -10,6 +10,8 @@ function superposition(){
 
      $("#exhibit_title").html("Superposition");
      $("#exhibit_description").html("<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse neque ex, venenatis id mauris quis, faucibus iaculis nunc. Sed congue arcu vel lorem euismod tincidunt. Sed at lorem ullamcorper, imperdiet lectus fermentum, aliquam erat. Mauris bibendum nec purus nec finibus. Nunc eget nibh mauris. Aliquam ultrices ligula non felis tristique euismod. Etiam vitae sem orci. Proin vel neque id metus accumsan laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut eleifend finibus ipsum, vel molestie nisi dapibus ac.</p>");
+     $("#instructions").html("Use the sliders to change the phase and period (frequency) of the second wave. With the correct choices it is possible to make the combined wave disappear.");
+
 
      var xspacing = 5;   // How far apart should each horizontal location be spaced
      var w;              // Width of entire wave
@@ -22,22 +24,22 @@ function superposition(){
      var yvalues2;  // Using an array to store height values for the wave
 
      p.setup = function() {
-       $("#inputs").empty();
+       $("#controls").empty();
        var canvas = p.createCanvas(800, 360);
        canvas.parent("exhibit_canvas");
        w = p.width+xspacing;
        dx = (p.TWO_PI / period) * xspacing;
        yvalues1 = new Array(w/xspacing);
        yvalues2 = new Array(w/xspacing);
-       $("#inputs").append("<span>PHASE</span>");
+       $("#controls").append("<span>PHASE</span>");
        slider1 = p.createSlider(0,p.TWO_PI,0,0);
        slider1.class('superposition_slider');
-       slider1.parent('inputs');
+       slider1.parent('controls');
 
-       $("#inputs").append("<span>PERIOD</span>");
+       $("#controls").append("<span>PERIOD</span>");
        slider2 = p.createSlider(0.5,1.5,1,0);
        slider2.class('superposition_slider');
-       slider2.parent('inputs');
+       slider2.parent('controls');
      };
 
      p.draw = function() {

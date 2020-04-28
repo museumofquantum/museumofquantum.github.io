@@ -6,8 +6,9 @@ function tunnelling(){
     window.myp5.remove();
   }
 
-  $("#exhibit_title").html("Tunnelling - NOT YET IMPLEMENTED");
-  $("#exhibit_description").html("<p>Click to release a particle with energy equivalent to the y-axis position.</p>");
+  $("#exhibit_title").html("Tunnelling");
+  $("#exhibit_description").html("<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse neque ex, venenatis id mauris quis, faucibus iaculis nunc. Sed congue arcu vel lorem euismod tincidunt. Sed at lorem ullamcorper, imperdiet lectus fermentum, aliquam erat. Mauris bibendum nec purus nec finibus. Nunc eget nibh mauris. Aliquam ultrices ligula non felis tristique euismod. Etiam vitae sem orci. Proin vel neque id metus accumsan laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut eleifend finibus ipsum, vel molestie nisi dapibus ac.</p>");
+  $("#instructions").html("Click to release a particle with energy equivalent to the y-axis position.");
 
   var sketch = function( p ) {
 
@@ -26,31 +27,45 @@ function tunnelling(){
     var quantum = true;
 
      p.setup = function() {
-      $("#inputs").empty();
+
+      $("#controls").empty();
+
       var canvas = p.createCanvas(canvasWidth, canvasHeight);
       canvas.parent("exhibit_canvas");
-      $("#inputs").append("<span>BARRIER WIDTH</span>");
+
+
+      $("#controls").append("<span>BARRIER WIDTH</span>");
       width_slider = p.createSlider(0,5.0,2.5,0);
       width_slider.class('superposition_slider');
-      width_slider.parent('inputs');
+      width_slider.parent('controls');
 
-      checkbox = p.createCheckbox('', true);
-      checkbox.changed(function() {quantum = !quantum});
-      checkbox.class('input');
-      checkbox.html("<span class='checkbox_label'>quantum mode</span>", true);
-      console.log(checkbox.elt);
-      checkbox.parent('inputs');
 
-      checkbox = p.createCheckbox('', false);
-      checkbox.html("<span class='checkbox_label'>animate</span>", true);
-      checkbox.changed(function() {animate = !animate});
-      checkbox.class('input');
-      checkbox.parent('inputs');
+      $("#controls").append("<span>MODE</span>");
+
+      mode = p.createRadio();
+      mode.option('', false);
+      mode.html("<span class='controls_checkbox_label'>Classical</span>", true);
+      mode.option('', true);
+      mode.html("<span class='controls_checkbox_label'>Quantum</span>", true);
+      mode.parent('controls');
+      mode._getInputChildrenArray()[1].checked = true;
+      mode.changed(reset);
+
+      // checkbox = p.createCheckbox('', true);
+      // checkbox.changed(function() {quantum = !quantum});
+      // checkbox.html("<span class='controls_checkbox_label'>quantum mode</span>", true);
+      // checkbox.class('controls_checkbox');
+      // checkbox.parent('controls');
+
+      checkbox2 = p.createCheckbox('', false);
+      checkbox2.changed(function() {animate = !animate});
+      checkbox2.html("<span class='controls_checkbox_label'>Animate</span>", true);
+      checkbox2.class('controls_checkbox');
+      checkbox2.parent('controls');
 
       button1 = p.createButton('reset');
       button1.mousePressed(reset);
-      button1.class('input');
-      button1.parent('inputs');
+      button1.parent('controls');
 
     }
 
@@ -63,6 +78,8 @@ function tunnelling(){
     }
 
     p.draw = function() {
+
+      quantum = mode.value();
 
       p.background('#111');
       p.noStroke();
@@ -149,6 +166,7 @@ function tunnelling(){
         E = -(i-300)/300;
 
         if (quantum) {
+
           if (E<V0) {
             Prob = 1/(1+((V0**2*Math.sinh(width_slider.value()*Math.sqrt(V0-E))**2)/(4*E*(V0-E))));
           } else if (E==V0) {
@@ -157,6 +175,7 @@ function tunnelling(){
           } else {
             Prob = 1/(1+((V0**2*Math.sin(width_slider.value()*Math.sqrt(E-V0))**2)/(4*E*(E-V0))));
           }
+
         } else {
 
           if (E<V0) {
@@ -205,6 +224,12 @@ function tunnelling(){
           if (this.E>V0) {
             this.prob = 1/(1+((V0**2*Math.sin(width_slider.value()*Math.sqrt(this.E-V0))**2)/(4*this.E*(this.E-V0))));
           }
+          if (this.E==V0) {
+            E=V0-0.0001;
+            this.prob = 1/(1+((V0**2*Math.sin(width_slider.value()*Math.sqrt(this.E-V0))**2)/(4*this.E*(this.E-V0))));
+          }
+
+
         } else {
           if (this.E<V0) {
             this.prob = 0.0;

@@ -7,7 +7,8 @@ function probability(){
   }
 
   $("#exhibit_title").html("Probability");
-  $("#exhibit_description").html("<p>Click to release a particle with energy equivalent to the y-axis position.</p>");
+  $("#exhibit_description").html("<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse neque ex, venenatis id mauris quis, faucibus iaculis nunc. Sed congue arcu vel lorem euismod tincidunt. Sed at lorem ullamcorper, imperdiet lectus fermentum, aliquam erat. Mauris bibendum nec purus nec finibus. Nunc eget nibh mauris. Aliquam ultrices ligula non felis tristique euismod. Etiam vitae sem orci. Proin vel neque id metus accumsan laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut eleifend finibus ipsum, vel molestie nisi dapibus ac.</p>");
+  $("#instructions").html("Click to draw a particle from a probability distribution and add it to the histogram.");
 
   var canvasWidth = 800;
   var canvasHeight = 400;
@@ -15,7 +16,7 @@ function probability(){
   var barWidth = canvasWidth / channels;
   var hist = new Array(channels).fill(0);
   var probtype = 'normal';
-  var animate = true;
+  var animate = false;
 
 
   var sigma_range = 4;
@@ -23,19 +24,43 @@ function probability(){
   var sketch = function( p ) {
 
     p.setup = function() {
-      $("#inputs").empty();
+      $("#controls").empty();
       var canvas = p.createCanvas(canvasWidth, canvasHeight);
       canvas.parent("exhibit_canvas");
+      reset();
+
+      $("#controls").append("<span>DISTRIBUTION TYPE:</span>");
+      radio = p.createRadio();
+      radio.option('', 'normal');
+      radio.html("<span class='controls_checkbox_label'>Normal</span>", true);
+      radio.option('', 'uniform');
+      radio.html("<span class='controls_checkbox_label'>Uniform</span>", true);
+      radio.parent('controls');
+      radio._getInputChildrenArray()[1].checked = true;
+      radio.changed(reset);
+
+      checkbox = p.createCheckbox('', false);
+      checkbox.changed(function() {animate = !animate});
+      checkbox.html("<span class='controls_checkbox_label'>Animate</span>", true);
+      checkbox.class('controls_checkbox');
+      checkbox.parent('controls');
+
       button = p.createButton('add 100');
-      button.mousePressed(addN(100));
+      button.mousePressed(function() {addN(100)});
+      button.parent('controls');
+
       button2 = p.createButton('reset');
       button2.mousePressed(reset);
+      button2.parent('controls');
     }
 
     p.draw = function()  {
 
+      probtype = radio.value();
+
       p.background('#111');
       drawProb();
+
       var total = hist.reduce((a, b) => a + b, 0);
 
       if (animate) {
