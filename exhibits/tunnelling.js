@@ -44,7 +44,6 @@ function tunnelling(){
 
 
       $("#controls").append("<span>MODE</span>");
-
       mode = p.createRadio();
       mode.option('', false);
       mode.html("<span class='controls_checkbox_label'>Classical</span>", true);
