@@ -1,7 +1,26 @@
 
 
+
+
+
 #exhibit_canvas {
   /* border: 1px solid #FFF; */
+}
+
+
+#inputs {
+  display: inline-block;
+  width: 100%;
+}
+
+.input {
+
+  /* display: inline-block; */
+}
+
+
+.checkbox_label {
+  padding: 5px;
 }
 
 .superposition_slider {
