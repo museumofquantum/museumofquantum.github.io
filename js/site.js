@@ -1,5 +1,10 @@
 
 
+function about() {
+  $( "#about" ).show();
+  $( "#exhibits" ).hide();
+}
+
 function loadExhibit(exhibit) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {

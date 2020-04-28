@@ -1,10 +1,149 @@
 <!DOCTYPE html>
-<html>
-   <head>
-      <title>HTML Meta Tag</title>
-      <meta http-equiv = "refresh" content = "0; url = exhibits.html" />
-   </head>
-   <body>
-      <p>Redirecting to another URL</p>
-   </body>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Museum of Quantum</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/exhibits.css">
+
+  <!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script> -->
+  <!-- <link rel="stylesheet" href="css/github-prettify-theme.css"> -->
+  <script src="js/site.js" type="text/javascript"></script>
+  <script src="js/p5.min.js" type="text/javascript"></script>
+  <script src="exhibits/superposition.js" type="text/javascript"></script>
+  <script src="exhibits/tunnelling.js" type="text/javascript"></script>
+  <script src="exhibits/pong.js" type="text/javascript"></script>
+  <script src="exhibits/probability.js" type="text/javascript"></script>
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <!-- <link rel="icon" type="image/png" href="dist/images/favicon.png"> -->
+
+</head>
+<body class="code-snippets-visible" onload="">
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+
+
+
+    <div class="navbar-spacer"></div>
+    <nav class="navbar">
+      <div class="container">
+        <ul class="navbar-list">
+
+          <li class="navbar-item"><a class="navbar-link" onclick="about();" href="#">About</a></li>
+
+          <li class="navbar-item">
+            <a class="navbar-link" href="#" data-popover="#moreNavPopover">Virtual Exhibits</a>
+            <div id="moreNavPopover" class="popover">
+              <ul class="popover-list">
+                <li class="popover-item">
+                  <a class="popover-link" onclick="probability();" >Probability</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" onclick="superposition();" href="#">Superposition</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" onclick="tunnelling();" >Tunnelling</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" onclick="pong();" >Pong</a>
+                </li>
+
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="navbar-item">
+            <a class="navbar-link" href="#" data-popover="#moreNavPopover2">Connect</a>
+            <div id="moreNavPopover2" class="popover">
+              <ul class="popover-list">
+                <li class="popover-item">
+                  <a class="popover-link" href="mailto:s.wilkins@sussex.ac.uk">Email</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" href="https://github.com/stephenmwilkins">Github</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" href="https://www.youtube.com/channel/UCZMKW8cJlcBhSxOkMxO3nYw">YouTube</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" href="https://www.linkedin.com/in/stephen-wilkins-432314184/">LinkedIn</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" href="https://profiles.sussex.ac.uk/p192372-stephen-wilkins">Sussex</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+
+
+
+    <div class="docs-section" id="about">
+
+      <h2 class="docs-header">Museum of Quantum</h2>
+
+        <h5>About</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse neque ex, venenatis id mauris quis, faucibus iaculis nunc. Sed congue arcu vel lorem euismod tincidunt. Sed at lorem ullamcorper, imperdiet lectus fermentum, aliquam erat. Mauris bibendum nec purus nec finibus. Nunc eget nibh mauris. Aliquam ultrices ligula non felis tristique euismod. Etiam vitae sem orci. Proin vel neque id metus accumsan laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut eleifend finibus ipsum, vel molestie nisi dapibus ac.</p>
+    </div>
+
+
+
+    <!-- Exhibits -->
+    <div class="docs-section" id="exhibits">
+
+      <h3 class="docs-header" style="display:inline">Exhibits&gt;&gt;</h3><h4 id="exhibit_title" style="display:inline"></h4>
+
+      <div id="exhibit_description"></div>
+
+      <div id="instructions container">
+        <h5>Instructions</h5>
+        <p id="instructions"></p>
+      </div>
+
+      <div id="exhibit">
+        <div id="exhibit_canvas"></div>
+        <div id="controls"></div>
+      </div>
+
+    </div>
+
+
+
+
+
+  </div>
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
 </html>

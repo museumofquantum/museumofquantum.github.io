@@ -1,4 +1,13 @@
 
+
+#about {
+  display: block;
+}
+
+#exhibits {
+  display: none;
+}
+
 .social {
   height: 40px;
   padding: 5px;

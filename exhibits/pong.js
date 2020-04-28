@@ -3,6 +3,9 @@
 
 function pong(){
 
+  $( "#about" ).hide();
+  $( "#exhibits" ).show();
+
   if (window.hasOwnProperty('myp5')) {
     window.myp5.remove();
   }
