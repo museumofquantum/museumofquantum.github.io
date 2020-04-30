@@ -37,12 +37,19 @@
   <script src="exhibits/pong.js" type="text/javascript"></script>
   <script src="exhibits/probability.js" type="text/javascript"></script>
   <script src="exhibits/fusion.js" type="text/javascript"></script>
+  <!-- <script src="exhibits/hspecseries.js" type="text/javascript"></script> -->
+  <script src="exhibits/hspecseries_static.js" type="text/javascript"></script>
+  <script src="exhibits/blackbody.js" type="text/javascript"></script>
+<script src="exhibits/boltzmann.js" type="text/javascript"></script>
+<script src="exhibits/particlebox.js" type="text/javascript"></script>
+<script src="exhibits/muons.js" type="text/javascript"></script>
+<script src="exhibits/cloudchamber.js" type="text/javascript"></script>
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <!-- <link rel="icon" type="image/png" href="dist/images/favicon.png"> -->
 
 </head>
-<body class="code-snippets-visible" onload="">
+<body class="code-snippets-visible" onload="cloudchamber()">
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -75,6 +82,18 @@
                 </li>
                 <li class="popover-item">
                   <a class="popover-link" onclick="fusion();" >Fusion</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" onclick="hspecseries();" >H spectral series</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" onclick="blackbody();" >Blackbody</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" onclick="boltzmann();" >Boltmann Distribution</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" onclick="particlebox();" >Particle in a Box</a>
                 </li>
 
               </ul>

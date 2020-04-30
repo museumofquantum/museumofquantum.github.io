@@ -41,6 +41,12 @@
   transition: opacity .2s;
 }
 
+
+.small_slider  {
+  width: 250px;
+}
+
+
 /* Mouse-over effects */
 .superposition_slider:hover {
   opacity: 1; /* Fully shown on mouse-over */
