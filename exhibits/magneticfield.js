@@ -44,17 +44,17 @@ function magneticfield(){
         energy_loss_slider.class('superposition_slider');
         energy_loss_slider.parent('controls');
 
-        $("#controls").append("<span>B_x</span>");
-        Bphi_slider = p.createSlider(0,p.TWO_PI,0,0);
-        Bphi_slider.class('superposition_slider');
-        Bphi_slider.parent('controls');
-        Bphi_slider.input(function() {Bphi=Bphi_slider.value()});
-
-        $("#controls").append("<span>B_y</span>");
-        Btheta_slider = p.createSlider(0,p.TWO_PI,0,0);
-        Btheta_slider.class('superposition_slider');
-        Btheta_slider.parent('controls');
-        Btheta_slider.input(function() {Btheta=Btheta_slider.value()});
+        // $("#controls").append("<span>B_x</span>");
+        // Bphi_slider = p.createSlider(0,p.TWO_PI,0,0);
+        // Bphi_slider.class('superposition_slider');
+        // Bphi_slider.parent('controls');
+        // Bphi_slider.input(function() {Bphi=Bphi_slider.value()});
+        //
+        // $("#controls").append("<span>B_y</span>");
+        // Btheta_slider = p.createSlider(0,p.TWO_PI,0,0);
+        // Btheta_slider.class('superposition_slider');
+        // Btheta_slider.parent('controls');
+        // Btheta_slider.input(function() {Btheta=Btheta_slider.value()});
 
       }
 
