@@ -10,7 +10,7 @@ function magneticfield(){
 
   $("#exhibit_title").html("Magnetic Field");
   $("#exhibit_description").html("<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse neque ex, venenatis id mauris quis, faucibus iaculis nunc. Sed congue arcu vel lorem euismod tincidunt. Sed at lorem ullamcorper, imperdiet lectus fermentum, aliquam erat. Mauris bibendum nec purus nec finibus. Nunc eget nibh mauris. Aliquam ultrices ligula non felis tristique euismod. Etiam vitae sem orci. Proin vel neque id metus accumsan laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut eleifend finibus ipsum, vel molestie nisi dapibus ac.</p>");
-  $("#instructions").html("Click to fire a particle through a magnetic field.");
+  $("#instructions").html("Click to fire a particle through. The length of the firing line determines the initial energy of the particle. You can also change the magnetic field strength and rate of energy loss in the magnetic field.");
 
 
   var sketch = function( p ) {
@@ -23,7 +23,8 @@ function magneticfield(){
       var B_strength = -2;
       var energy_loss = 0.99;
 
-
+      var Bphi = 0.0;
+      var Btheta = 0.0;
 
       p.setup = function() {
 
@@ -43,6 +44,18 @@ function magneticfield(){
         energy_loss_slider.class('superposition_slider');
         energy_loss_slider.parent('controls');
 
+        $("#controls").append("<span>B_x</span>");
+        Bphi_slider = p.createSlider(0,p.TWO_PI,0,0);
+        Bphi_slider.class('superposition_slider');
+        Bphi_slider.parent('controls');
+        Bphi_slider.input(function() {Bphi=Bphi_slider.value()});
+
+        $("#controls").append("<span>B_y</span>");
+        Btheta_slider = p.createSlider(0,p.TWO_PI,0,0);
+        Btheta_slider.class('superposition_slider');
+        Btheta_slider.parent('controls');
+        Btheta_slider.input(function() {Btheta=Btheta_slider.value()});
+
       }
 
       p.draw = function() {
@@ -61,7 +74,16 @@ function magneticfield(){
         p.stroke(255, 50);
         p.line(0, canvasHeight/2, p.mouseX, p.mouseY);
 
+
+
         system.run();
+
+        // p.push();
+        // p.rotateX(p.TWO_PI*Bphi);
+        // p.rotateZ(p.TWO_PI*Btheta);
+        // p.box(50);
+        // // p.line(10,10,50,10);
+        // p.pop();
 
       }
 

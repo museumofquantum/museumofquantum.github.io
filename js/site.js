@@ -5,16 +5,15 @@ function about() {
   $( "#exhibits" ).hide();
 }
 
-function loadExhibit(exhibit) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-     document.getElementById("exhibit").innerHTML = this.responseText;
+
+function exhibits() {
+  var siteParams = new URLSearchParams(window.location.search);
+  console.log(window.location.search);
+  if (siteParams.has("exhibit")==true) {
+      window[siteParams.get("exhibit")]();
     }
-  };
-  xhttp.open("GET", "exhibits/"+exhibit+".html", true);
-  xhttp.send();
 }
+
 
 
 $(document).ready(function() {

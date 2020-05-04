@@ -37,7 +37,7 @@ function cloudchamber(){
 
         checkbox1 = p.createCheckbox('', false);
         checkbox1.changed(function() {addBField = !addBField});
-        checkbox1.html("<span class='controls_checkbox_label'>Add magnetic field</span>", true);
+        checkbox1.html("<span class='controls_checkbox_label'>Add magnetic field (pointing into the screen)</span>", true);
         checkbox1.class('controls_checkbox');
         checkbox1.parent('controls');
 
@@ -112,7 +112,7 @@ function cloudchamber(){
           this.mq = 0.01;
         }
 
-        this.starting_velocity = p.createVector(p.random(-1, 1), p.random(-1, 1));
+        this.starting_velocity = p.createVector(p.random(-1, 1), p.random(-1, 1), 0);
         this.starting_position = starting_position;
         this.position = starting_position.copy();
         this.lifespan = p.random(0,255); // starting opacity
@@ -141,7 +141,7 @@ function cloudchamber(){
         this.position = this.starting_position.copy();
         this.velocity = this.starting_velocity.copy();
 
-        B = p.createVector(0.0, 1.0);
+        B = p.createVector(0.0, 0.0, 1.0);
         B.mult(0.003*this.mq);
 
         for (i=0;i<this.length;i++) {
@@ -151,7 +151,7 @@ function cloudchamber(){
             this.acceleration = 0.0;
           }
           this.velocity.add(this.acceleration);
-          this.velocity = this.velocity.mult(0.999995);
+          this.velocity = this.velocity.mult(0.9995);
           this.position.add(this.velocity);
           p.ellipse(this.position.x, this.position.y, this.strokeWeight, this.strokeWeight);
         }
