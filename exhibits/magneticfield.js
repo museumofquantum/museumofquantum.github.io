@@ -130,7 +130,8 @@ function magneticfield(){
         this.lifespan -= 1;
 
         if (this.position.x>canvasWidth/2) {
-          B = p.createVector(0.0, 0.0, 1.0);
+          B = p.createVector(0.0, 1.0, 0.0);
+          // B = p.createVector(0.0, 0.0, 1.0);
           B.mult((10**B_strength)*this.mq);
           this.acceleration = this.velocity.cross(B);
           this.velocity.add(this.acceleration);
